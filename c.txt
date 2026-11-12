@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin John Samuel — Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk / JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        darkbg: '#0a0a0a',
+                        cardbg: '#121212',
+                        bordercol: '#262626',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ededed;
+        }
+        .tech-border {
+            border: 1px solid #262626;
+        }
+        /* Background image settings for the hero */
+        #hero-bg-image {
+            background-image: url('binary_hands.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            mix-blend-mode: luminosity;
+        }
+        /* Sliding Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 18s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-white selection:text-black">
+
+    <!-- Top Browser Bar Mockup -->
+    <div class="border-b border-bordercol bg-darkbg py-3 px-4 flex items-center justify-between text-xs font-mono text-zinc-400 sticky top-0 z-50">
+        <div class="flex items-center space-x-2">
+            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+        </div>
+        <div class="hidden md:flex items-center space-x-2 bg-cardbg px-4 py-1 rounded tech-border text-zinc-300">
+            <i class="fa-solid fa-lock text-[10px]"></i>
+            <span>kevin-john-samuel.tech</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <span class="hidden sm:inline">MENU</span>
+            <button id="menu-btn" class="text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40 bg-black/95 flex flex-col items-center justify-center space-y-8 text-2xl font-mono">
+        <button id="close-menu" class="absolute top-6 right-6 text-2xl text-zinc-400 hover:text-white">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#hero" class="mobile-link hover:text-zinc-400 transition">01. HOME</a>
+        <a href="#recently-released" class="mobile-link hover:text-zinc-400 transition">02. PROJECTS</a>
+        <a href="#about" class="mobile-link hover:text-zinc-400 transition">03. ABOUT & SKILLS</a>
+        <a href="#contacts" class="mobile-link hover:text-zinc-400 transition">04. CONTACTS</a>
+    </div>
+
+    <!-- HERO SECTION WITH BACKGROUND IMAGE -->
+    <section id="hero" class="border-b border-bordercol py-16 px-6 md:px-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative overflow-hidden">
+        
+        <!-- The Background Image Layer -->
+        <div id="hero-bg-image" class="absolute inset-0 z-0"></div>
+
+        <!-- Content Layer -->
+        <div class="lg:col-span-7 space-y-8 relative z-10">
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full overflow-hidden tech-border flex-shrink-0">
+                    <img src="profile.png" alt="Kevin John Samuel" class="w-full h-full object-cover">
+                </div>
+                <span class="font-mono text-xs uppercase tracking-widest text-zinc-400">Kayamkulam, Kerala</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight uppercase leading-none font-mono">
+                Developing<br>Better<br>Software
+            </h1>
+            <p class="text-zinc-400 text-base sm:text-lg max-w-xl font-mono">
+                BCA Honours student (6th Semester) & full-stack developer building clear, user-friendly, and optimized applications in Python, Flutter, and Django.
+            </p>
+            <div>
+                <a href="#recently-released" class="inline-flex items-center space-x-3 bg-white text-black font-mono text-sm px-6 py-3 font-semibold hover:bg-zinc-200 transition">
+                    <span>BROWSE PROJECTS</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Sliding Tech Stack / Skills Ticker replacing the right box -->
+        <div class="lg:col-span-5 relative z-10 flex flex-col justify-center space-y-6">
+            <div class="tech-border bg-cardbg/80 backdrop-blur py-8 overflow-hidden relative">
+                <div class="absolute top-2 left-3 font-mono text-[10px] text-zinc-500 uppercase tracking-widest z-20">Core Stack & Skills // Ticker</div>
+                
+                <!-- Sliding Container -->
+                <div class="flex overflow-x-hidden whitespace-nowrap mt-4">
+                    <div class="animate-marquee flex items-center space-x-8 font-mono text-lg font-bold text-zinc-200">
+                        <span class="flex items-center space-x-2"><i class="fa-brands fa-python text-zinc-400"></i><span>PYTHON</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-mobile-screen text-zinc-400"></i><span>FLUTTER</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-globe text-zinc-400"></i><span>DJANGO</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-database text-zinc-400"></i><span>SQL</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-brain text-zinc-400"></i><span>NLP & AI</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-brands fa-github text-zinc-400"></i><span>GITHUB</span></span>
+                        <span class="text-zinc-600">//</span>
+                    </div>
+                    <!-- Duplicate for infinite smooth loop -->
+                    <div class="animate-marquee flex items-center space-x-8 font-mono text-lg font-bold text-zinc-200" aria-hidden="true">
+                        <span class="flex items-center space-x-2"><i class="fa-brands fa-python text-zinc-400"></i><span>PYTHON</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-mobile-screen text-zinc-400"></i><span>FLUTTER</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-globe text-zinc-400"></i><span>DJANGO</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-database text-zinc-400"></i><span>SQL</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-solid fa-brain text-zinc-400"></i><span>NLP & AI</span></span>
+                        <span class="text-zinc-600">//</span>
+                        <span class="flex items-center space-x-2"><i class="fa-brands fa-github text-zinc-400"></i><span>GITHUB</span></span>
+                        <span class="text-zinc-600">//</span>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-1 right-3 font-mono text-[9px] text-zinc-500 uppercase z-20">Marian College Kuttikkanam</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECENTLY RELEASED / PROJECTS SECTION -->
+    <section id="recently-released" class="border-b border-bordercol py-16 px-6 md:px-16 max-w-7xl mx-auto">
+        <div class="flex items-center space-x-4 mb-12">
+            <span class="font-mono text-xs tracking-widest text-zinc-500 uppercase [writing-mode:vertical-lr] rotate-180">Recently Released</span>
+            <div class="h-[1px] bg-bordercol flex-grow"></div>
+            <h2 class="font-mono text-xl uppercase tracking-wider">Featured Work</h2>
+        </div>
+
+        <!-- Project 1: Lost and Found -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 tech-border bg-cardbg p-6 md:p-8 mb-8">
+            <div class="lg:col-span-5 flex items-center justify-center bg-black tech-border p-6 min-h-[250px]">
+                <div class="text-center space-y-3">
+                    <i class="fa-solid fa-mobile-screen-button text-4xl text-zinc-300"></i>
+                    <p class="font-mono text-xs text-zinc-400">Flutter Mobile Application</p>
+                </div>
+            </div>
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+                <div>
+                    <h3 class="font-mono text-2xl font-bold uppercase mb-2">Lost and Found Flutter App</h3>
+                    <div class="h-[1px] bg-bordercol my-4"></div>
+                    <ul class="space-y-2 font-mono text-sm text-zinc-400">
+                        <li><span class="text-white">Platform:</span> Cross-Platform (Android / iOS)</li>
+                        <li><span class="text-white">Type:</span> Mobile Utility Application</li>
+                        <li><span class="text-white">Tech Stack:</span> Flutter, Dart, Local State</li>
+                        <li><span class="text-white">Description:</span> Developed a mobile application concept to help campus users report, browse, and recover lost-and-found items efficiently.</li>
+                    </ul>
+                </div>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="https://github.com/kevinjohnsamuel" target="_blank" class="inline-flex items-center space-x-2 bg-white text-black font-mono text-xs px-5 py-2.5 font-semibold hover:bg-zinc-200 transition">
+                        <span>GITHUB REPO</span>
+                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: NLP Project -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 tech-border bg-cardbg p-6 md:p-8">
+            <div class="lg:col-span-5 flex items-center justify-center bg-black tech-border p-6 min-h-[250px]">
+                <div class="text-center space-y-3">
+                    <i class="fa-solid fa-brain text-4xl text-zinc-300"></i>
+                    <p class="font-mono text-xs text-zinc-400">Artificial Intelligence / NLP</p>
+                </div>
+            </div>
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+                <div>
+                    <h3 class="font-mono text-2xl font-bold uppercase mb-2">Natural Language Processing Project</h3>
+                    <div class="h-[1px] bg-bordercol my-4"></div>
+                    <ul class="space-y-2 font-mono text-sm text-zinc-400">
+                        <li><span class="text-white">Platform:</span> Python / Google Colab</li>
+                        <li><span class="text-white">Type:</span> Academic AI/ML Research</li>
+                        <li><span class="text-white">Tech Stack:</span> Python, NLP Libraries, Machine Learning Concepts</li>
+                        <li><span class="text-white">Description:</span> Completed an academic Natural Language Processing project involving text analysis and review processing using foundational AI pipelines.</li>
+                    </ul>
+                </div>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="https://github.com/kevinjohnsamuel" target="_blank" class="inline-flex items-center space-x-2 tech-border px-5 py-2.5 font-mono text-xs hover:bg-zinc-800 transition">
+                        <span>DETAILED INFORMATION</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY AND HOW? SECTION -->
+    <section id="about" class="border-b border-bordercol py-16 px-6 md:px-16 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6 space-y-6">
+            <div class="w-16 h-16 tech-border bg-cardbg flex items-center justify-center">
+                <i class="fa-solid fa-terminal text-2xl text-white"></i>
+            </div>
+            <h2 class="font-mono text-2xl uppercase tracking-wider">Why and How?</h2>
+            <div class="h-[1px] bg-bordercol"></div>
+            <p class="text-zinc-400 font-mono text-sm leading-relaxed">
+                BCA Honours student currently in the 6th semester at Marian College Kuttikkanam Autonomous, passionate about building robust full-stack applications and exploring AI & machine learning solutions. Completed a 2-month practical internship at IPSR Solutions.
+            </p>
+            <div class="pt-2">
+                <span class="font-mono text-xs text-zinc-500 uppercase tracking-widest block mb-3">Core Stack & Skills</span>
+                <div class="flex flex-wrap gap-2 font-mono text-xs">
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">Python</span>
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">C++</span>
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">Flutter</span>
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">Django</span>
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">SQL</span>
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">NLP & AI</span>
+                    <span class="tech-border bg-cardbg px-3 py-1.5 text-zinc-300">GitHub</span>
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+            <div class="tech-border bg-cardbg p-6 text-center space-y-2">
+                <span class="font-mono text-3xl font-bold block text-white">6th</span>
+                <span class="font-mono text-xs text-zinc-500 uppercase">Semester BCA</span>
+            </div>
+            <div class="tech-border bg-cardbg p-6 text-center space-y-2">
+                <span class="font-mono text-3xl font-bold block text-white">2 Mo</span>
+                <span class="font-mono text-xs text-zinc-500 uppercase">IPSR Internship</span>
+            </div>
+            <div class="tech-border bg-cardbg p-6 text-center space-y-2">
+                <span class="font-mono text-3xl font-bold block text-white">2+</span>
+                <span class="font-mono text-xs text-zinc-500 uppercase">Key Projects</span>
+            </div>
+            <div class="tech-border bg-cardbg p-6 text-center space-y-2">
+                <span class="font-mono text-3xl font-bold block text-white">100%</span>
+                <span class="font-mono text-xs text-zinc-500 uppercase">Dedication</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTS SECTION -->
+    <section id="contacts" class="py-16 px-6 md:px-16 max-w-7xl mx-auto text-center space-y-6">
+        <h2 class="font-mono text-3xl uppercase tracking-wider">Let's Connect</h2>
+        <p class="font-mono text-zinc-400 text-sm max-w-md mx-auto">
+            Open for software development opportunities, AI projects, or technical collaborations.
+        </p>
+        <div class="pt-4 flex justify-center space-x-6 font-mono text-sm">
+            <a href="mailto:kevibreak@gmail.com" class="tech-border bg-cardbg px-6 py-3 hover:bg-zinc-800 transition flex items-center space-x-2">
+                <i class="fa-solid fa-envelope"></i>
+                <span>kevibreak@gmail.com</span>
+            </a>
+            <a href="https://linkedin.com/in/kevin-john-84b463329" target="_blank" class="tech-border bg-cardbg px-6 py-3 hover:bg-zinc-800 transition flex items-center space-x-2">
+                <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/kevinjohnsamuel" target="_blank" class="tech-border bg-cardbg px-6 py-3 hover:bg-zinc-800 transition flex items-center space-x-2">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-bordercol py-8 px-6 md:px-16 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center font-mono text-xs text-zinc-500 space-y-4 md:space-y-0">
+        <div class="flex space-x-6">
+            <a href="#hero" class="hover:text-white transition">HOME</a>
+            <a href="#about" class="hover:text-white transition">ABOUT</a>
+            <a href="#contacts" class="hover:text-white transition">CONTACTS</a>
+        </div>
+        <div>
+            <span>© 2026 KEVIN JOHN SAMUEL. WRITE US: <a href="mailto:kevibreak@gmail.com" class="underline text-zinc-400">KEVIBREAK@GMAIL.COM</a></span>
+        </div>
+        <div class="flex space-x-4">
+            <a href="#" class="hover:text-white transition">TERMS OF USE</a>
+            <a href="#" class="hover:text-white transition">PRIVACY POLICY</a>
+        </div>
+    </footer>
+
+    <!-- Simple Mobile Menu Script -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
